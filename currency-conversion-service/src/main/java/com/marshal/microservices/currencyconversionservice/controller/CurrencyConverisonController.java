@@ -1,5 +1,6 @@
 package com.marshal.microservices.currencyconversionservice.controller;
 
+import com.marshal.microservices.currencyconversionservice.CurrencyExchangeProxy;
 import com.marshal.microservices.currencyconversionservice.bean.CurrencyConversion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -14,6 +15,9 @@ import java.util.HashMap;
 
 @RestController
 public class CurrencyConverisonController {
+
+    @Autowired
+    CurrencyExchangeProxy currencyExchangeProxy;
 
     @Autowired
     Environment environment;
@@ -32,7 +36,15 @@ public class CurrencyConverisonController {
         //CurrencyConversion currencyConversion = new CurrencyConversion(1001,from,to,new BigDecimal(1),quantity,new BigDecimal(1));
 
         //currencyConversion.setEnvironment(environment.getProperty("local.server.port"));
-        return new CurrencyConversion(1001,from,to,currencyConversion.getConversionMultiple(),quantity,currencyConversion.getConversionMultiple().multiply(quantity),currencyConversion.getEnvironment());
+        return new CurrencyConversion(1001,from,to,currencyConversion.getConversionMultiple(),quantity,currencyConversion.getConversionMultiple().multiply(quantity),currencyConversion.getEnvironment()+" "+"rest template");
+
+    }
+
+    @GetMapping("/currency-converison-feign/{from}/to/{to}/quantity/{quantity}")
+    public CurrencyConversion getCurrencyConversionFeign(@PathVariable String from, @PathVariable String to,@PathVariable BigDecimal quantity){
+
+        CurrencyConversion currencyConversion  = currencyExchangeProxy.getCurrencyConversionFeign(from,to);
+        return new CurrencyConversion(1001,from,to,currencyConversion.getConversionMultiple(),quantity,currencyConversion.getConversionMultiple().multiply(quantity),currencyConversion.getEnvironment()+" "+"feign");
 
     }
 }
