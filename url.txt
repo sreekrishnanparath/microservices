@@ -1,0 +1,18 @@
+currency exchange url - http://localhost:8000/currency-exchange/USD/to/AED
+
+currency conversion url - http://localhost:8002/currency-converison/USD/to/INR/quantity/10
+
+
+currency conversion feign url  - http://localhost:8002/currency-converison-feign/USD/to/INR/quantity/10
+
+
+eureka -  http://localhost:8761/eureka
+
+API-GATEWAY  -http://localhost:8765/
+
+API-GATEWAY with currency exchange - http://localhost:8765/CURRENCY-EXCHANGE/currency-exchange/USD/to/AED
+
+
+API-GATEWAY with currency conversion - http://localhost:8765/currency-converison/USD/to/INR/quantity/10
+
+
