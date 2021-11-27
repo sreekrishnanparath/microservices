@@ -32,7 +32,9 @@ public class currencyExchangeController {
 
         CurrencyExchange currencyExchange = currencyExchangeRepository.findByFromAndTo(from,to);
                 //new CurrencyExchange(1001, from, to, new BigDecimal(50));
-        currencyExchange.setEnvironment(environment.getProperty("local.server.port"));
+        String host = environment.getProperty("HOSTNAME");
+        String version = "v1";
+        currencyExchange.setEnvironment(environment.getProperty("local.server.port")+" - "+host+" - "+version);
 
         return currencyExchange;
     }

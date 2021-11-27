@@ -13,6 +13,13 @@ API-GATEWAY  -http://localhost:8765/
 API-GATEWAY with currency exchange - http://localhost:8765/CURRENCY-EXCHANGE/currency-exchange/USD/to/AED
 
 
-API-GATEWAY with currency conversion - http://localhost:8765/currency-converison/USD/to/INR/quantity/10
+API-GATEWAY with currency conversion - http://localhost:8765/CURRENCY-CONVERSION/currency-converison/USD/to/INR/quantity/10
 
 
+ZIPKIN-http://localhost:9411/zipkin/
+
+Router API-GATEWAY with currency exchange - http://localhost:8765/currency-exchange/USD/to/AED
+
+Router  API-GATEWAY with currency conversion - http://localhost:8765/currency-converison/USD/to/INR/quantity/10
+
+docker.io/sreemarshal/micro-sp-test-currency-exchange:0.0.1-SNAPSHOT'

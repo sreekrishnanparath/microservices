@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.math.BigDecimal;
 
 
-//@FeignClient(name="currency-exchange",url = "localhost:8000")
-@FeignClient(name="currency-exchange")
+//@FeignClient(name="currency-exchange",url = "localhost:8000") //default hardcoded configuration
+//@FeignClient(name="currency-exchange")//eureka configuration
+@FeignClient(name="currency-exchange",url = "${CURRENCY_EXCHANGE_SERVICE_HOST:http://localhost}:8000") // kubernetes config
 public interface CurrencyExchangeProxy {
 
     @GetMapping("/currency-exchange/{from}/to/{to}")
